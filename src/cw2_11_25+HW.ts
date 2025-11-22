@@ -2,8 +2,8 @@
 
 function addWordSuper (input:string, word="super") {
 
-    const expr1 = /[a-zA-Z]+/;
-    const expr2 = /[а-яА-Я]+/;
+    const expr1 = /^[a-zA-Z]+$/;
+    const expr2 = /^[а-яА-Я]+$/;
     if (expr1.test(input)){
         return word + " " + input;
     }
@@ -79,44 +79,44 @@ console.log(return3MaxValues());
 // При желании можете добавить еще какие-то методы на выбор (эта задача нам пригодится впоследствии)
 
 class Calculator {
-    constructor(public value1:number, public value2:number){
-        this.value1 = value1;
-        this.value2 =  value2;
+    // constructor(public value1:number, public value2:number){
+    //     this.value1 = value1;
+    //     this.value2 =  value2;
+    // }
+
+    sum(...args: Array<number>) {
+        return args.reduce((acc, num) => acc + num, 0);
     }
 
-    sum() {
-        return this.value1 + this.value2;
+    subtract(value1:number, value2:number) {
+        return value1 - value2;
     }
 
-    subtract() {
-        return this.value1 - this.value2;
+    multiply(...args: Array<number>) {
+        return args.reduce((acc, num) => acc * num, 1);
     }
 
-    multiply() {
-        return this.value1 * this.value2;
+    divide(value1:number, value2:number) {
+        return value1/value2;
     }
 
-    divide() {
-        return this.value1/this.value2;
+    exponentiate(value1:number, value2:number) {
+        return Math.pow(value1,value2);
     }
 
-    exponentiate() {
-        return Math.pow(this.value1, this.value2);
-    }
-
-    takeReminder() {
-        return this.value1%this.value2;
+    takeReminder(value1:number, value2:number) {
+        return value1%value2;
     }
 
 }
 
-const input1 = new Calculator(10, 4);
-console.log(input1.sum());
-console.log(input1.subtract());
-console.log(input1.multiply());
-console.log(input1.divide());
-console.log(input1.exponentiate());
-console.log(input1.takeReminder());
+const input1 = new Calculator();
+console.log(input1.sum(1, 2, 3));
+console.log(input1.subtract(2, 1));
+console.log(input1.multiply(2, 1, 3));
+console.log(input1.divide(2, 1));
+console.log(input1.exponentiate(2, 1));
+console.log(input1.takeReminder(2, 1));
 
 
 // 3. Создайте функцию для подсчета стоимости товаров в корзине. 
@@ -129,12 +129,14 @@ interface cartItems {
     }
 
 function getTotalCost (allItems: cartItems[]) {
-    let totalCost = 0;
-    for (let i=0; i < allItems.length; i++){
-        let cost = allItems[i].price * allItems[i].quantity;
-        totalCost += cost;
-    } 
-    return totalCost;
+    // let totalCost = 0;
+    //     for (const item of allItems){
+    //     let cost = item.price * item.quantity;
+    //     totalCost += cost;
+    // } 
+    // return totalCost;
+
+    return allItems.reduce((acc, num) => acc +num.price *num.quantity, 0);
 }
 const cartItems1: cartItems[] = [
     {name: "Apple",
@@ -159,10 +161,10 @@ console.log(getTotalCost(cartItems1));
 
 function getDefiniteWords (arr: string[], length: number = 4){
     let filteredArr = arr.filter(function(item){
-        return item.length === length;
+        return item.match(new RegExp("[a-zA-ZА-Яа-яёЁ]","g"))?.length === length;
     })
 
     return filteredArr;
 }
 
-console.log(getDefiniteWords(['Apple', 'Banana', 'Lime'], 5));
+console.log(getDefiniteWords(['Apple', 'Bana', 'Li4me']));
