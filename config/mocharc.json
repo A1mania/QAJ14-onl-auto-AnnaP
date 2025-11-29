@@ -1,0 +1,8 @@
+{
+  "extension": ["ts"],
+  "node-option": ["import=tsx/esm"],
+  "reporter": "mochawesome",
+  "reporter-options": "reportDir=reports",
+  "spec": ["./test/"],
+  "timeout": 30000
+}
