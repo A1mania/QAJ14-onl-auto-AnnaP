@@ -63,16 +63,16 @@ import { readFileSync } from "fs";
 
 const data = readFileSync("src/HW15/fileHW15.json", "utf-8");
 
+type userRole = "Admin" | "Standard user";
+
 interface User {
   id: number;
   username: string;
-  role: string;
+  role: userRole;
 }
 
 const stringObj: User[] = JSON.parse(data);
-
 const uniqueRoles = Array.from(new Set(stringObj.map((item) => item.role)));
-
 const nrOfUsersByRole = [];
 
 for (const oneRole of uniqueRoles) {
@@ -86,8 +86,8 @@ for (const oneRole of uniqueRoles) {
 }
 
 // console.log(nrOfUsersByRole);
-console.log(JSON.stringify(nrOfUsersByRole, null, 2));
-
+console.dir(nrOfUsersByRole, { depth: null });
+// console.log(JSON.stringify(nrOfUsersByRole, null, 2));
 
 // если роли известны
 // const nrOfUsersByRole = {
@@ -119,4 +119,3 @@ console.log(JSON.stringify(nrOfUsersByRole, null, 2));
 
 // console.log(nrOfUsersByRole);
 // console.log(JSON.stringify(nrOfUsersByRole, null, 2));
-
