@@ -12,6 +12,11 @@
    "name": "Aliaksandr",
    "last_name": "Bazhko",
    "email": "aliaksandr@email.com"
+},
+{ "username": "user4",
+   "name": null,
+   "last_name": null,
+   "email": null
 }
 ]
 

@@ -28,7 +28,7 @@ function getTotalCost(allItems: cartItems[]) {
   // return totalCost;
 
   return allItems
-    .filter((item) => item.inStock && item.quantity * item.price > 500)
+    .filter((item) => item.inStock || item.quantity * item.price > 500)
     .reduce((acc, num) => acc + num.price * num.quantity, 0);
 }
 
@@ -71,22 +71,52 @@ interface User {
 
 const stringObj: User[] = JSON.parse(data);
 
-const admin = stringObj.filter((item) => item.role === "Admin");
-const su = stringObj.filter((item) => item.role === "Standard User");
+const uniqueRoles = Array.from(new Set(stringObj.map((item) => item.role)));
 
-const adminUsers = admin.map(({ id, username }) => ({ id, username }));
-const suUsers = su.map(({ id, username }) => ({ id, username }));
+const nrOfUsersByRole = [];
 
-const nrOfUsersByRole = {
-  Admin: {
-    count: admin.length,
-    users: adminUsers,
-  },
-  StandardUser: {
-    count: su.length,
-    users: suUsers,
-  },
-};
+for (const oneRole of uniqueRoles) {
+  let singleRole = stringObj.filter((item) => item.role === oneRole);
+  nrOfUsersByRole.push({
+    [oneRole]: {
+      count: singleRole.length,
+      users: singleRole.map(({ id, username }) => ({ id, username })),
+    },
+  });
+}
 
-console.log(nrOfUsersByRole); //console.log(JSON.stringify(nrOfUsersByRole));
+// console.log(nrOfUsersByRole);
+console.log(JSON.stringify(nrOfUsersByRole, null, 2));
+
+
+// если роли известны
+// const nrOfUsersByRole = {
+//   Admin: {
+//     count: admin.length,
+//     users: adminUsers,
+//   },
+//   StandardUser: {
+//     count: su.length,
+//     users: suUsers,
+//   },
+// };
+// const admin = stringObj.filter((item) => item.role === "Admin");
+// const su = stringObj.filter((item) => item.role === "Standard User");
+
+// const adminUsers = admin.map(({ id, username }) => ({ id, username }));
+// const suUsers = su.map(({ id, username }) => ({ id, username }));
+
+// const nrOfUsersByRole = {
+//   Admin: {
+//     count: admin.length,
+//     users: adminUsers,
+//   },
+//   StandardUser: {
+//     count: su.length,
+//     users: suUsers,
+//   },
+// };
+
+// console.log(nrOfUsersByRole);
+// console.log(JSON.stringify(nrOfUsersByRole, null, 2));
 
