@@ -7,8 +7,9 @@ const tsJestTransformCfg = createDefaultPreset().transform;
 module.exports = {
   preset: "ts-jest",
   testEnvironment: "node",
-  rootDir: "../test_api",
-  testMatch: ["<rootDir>/**/*.spec.ts"], // см. ниже замечание
+  rootDir: "../test_jest",
+  testMatch: ["<rootDir>/*.ts"]
+  // testMatch: ["<rootDir>/**/*.spec.ts"], // см. ниже замечание
 };
 
 // запускать код с путем к конфигу можно вот так (так же адаптируйте путь)
