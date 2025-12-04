@@ -1,22 +1,21 @@
-[{ "username": "user1",
-   "name": "Anna",
-   "last_name": "Pachkovskaya",
-   "email": "anna@email.com"
-},
-{ "username": "yulia@email.com",
-   "name": "Yulia",
-   "last_name": "Bazhko",
-   "email": "yulia@email.com"
-},
-{ "username": "user3",
-   "name": "Aliaksandr",
-   "last_name": "Bazhko",
-   "email": "aliaksandr@email.com"
-},
-{ "username": "user4",
-   "name": null,
-   "last_name": null,
-   "email": null
-}
+[
+  {
+    "username": "user1",
+    "name": "Anna",
+    "last_name": "Pachkovskaya",
+    "email": "anna@email.com"
+  },
+  {
+    "username": "yulia@email.com",
+    "name": "Yulia",
+    "last_name": "Bazhko",
+    "email": "yulia@email.com"
+  },
+  {
+    "username": "user3",
+    "name": "Aliaksandr",
+    "last_name": "Bazhko",
+    "email": "aliaksandr@email.com"
+  },
+  { "username": "user4", "name": null, "last_name": null, "email": null }
 ]
-
