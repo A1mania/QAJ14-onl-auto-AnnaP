@@ -4,7 +4,7 @@ export default {
   extensionsToTreatAsEsm: [".ts"],
   rootDir: "..",
 //   testMatch: ["<rootDir>/test_api/**/*.spec.ts"]
-testMatch: ["<rootDir>/test_api/HW18.ts"]
+testMatch: ["<rootDir>/src/cw20.ts"]
   
  
 };
