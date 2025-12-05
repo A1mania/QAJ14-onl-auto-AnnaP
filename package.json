@@ -6,6 +6,7 @@
   "scripts": {
     "test": "mocha --config ./config/mocharc.json",
     "jest": "jest --config ./config/jest.config.cjs",
+    "cucumber": "npx cucumber-js --config ./config/cucumber.json",
     "api": "npx jest --config ./config/api.config.js",
     "pret": "npx prettier --write ."
   },
@@ -13,13 +14,16 @@
   "license": "ISC",
   "description": "A simple test framework",
   "devDependencies": {
+    "@cucumber/cucumber": "^12.3.0",
     "@types/chai": "^5.2.3",
+    "@types/cucumber": "^6.0.1",
     "@types/jest": "^30.0.0",
     "@types/mocha": "^10.0.10",
     "@types/mochawesome": "^6.2.5",
     "@types/node": "^24.10.1",
     "@types/superagent": "^8.1.9",
     "chai": "^6.2.1",
+    "i": "^0.3.7",
     "jest": "^30.2.0",
     "mocha": "^11.7.5",
     "mochawesome": "^7.1.4",
